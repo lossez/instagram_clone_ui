@@ -8,6 +8,7 @@ const HomeScreen = () => {
     const [dataStory, setDataStory] = React.useState<any>([]);
     const [dataPosts, setDataPosts] = React.useState<any>([]);
     const isFocussed = useIsFocused();
+    const [totalRender, setTotalRender] = React.useState(3);
 
     React.useEffect(() => {
         if (isFocussed) {
@@ -29,27 +30,49 @@ const HomeScreen = () => {
         <View style={styles.container}>
 
             <FlatList data={dataPosts}
-                ListHeaderComponent={
-                    <View key={Math.random()}>
-                        <FlatList horizontal data={dataStory} renderItem={({ item }) =>
-                            <AvatarGradient
-                                uri={item.picture.medium}
-                                name={item.name.first}
-                                key={Math.random()} />
-                        } keyExtractor={item => Math.random().toString()} />
-                        {/* <Divider color={'gray.800'} mb="2" key={Math.random()} /> */}
-                    </View>
-
-                }
+                initialNumToRender={totalRender}
+                maxToRenderPerBatch={totalRender * 2}
+                onEndReached={() => {
+                    setTotalRender(totalRender + 1)
+                }}
                 renderItem={({ item }) =>
                     <Content
                         key={'content' + Math.random()}
                         username={item.author}
                         description={item.description}
                         uri={item.urlToImage}
-                        date={item.publishedAt}
+                        publishedAt={item.publishedAt}
                     />
-                } keyExtractor={item => Math.random().toString()} />
+                }
+                ListHeaderComponent={
+                    <View key={Math.random()}>
+                        <FlatList
+                            py={4}
+                            showsHorizontalScrollIndicator={false}
+                            horizontal data={dataStory} renderItem={({ item }) =>
+                                <AvatarGradient
+                                    uri={item.picture.medium}
+                                    name={item.name.first}
+                                    key={Math.random()} />
+                            } keyExtractor={item => Math.random().toString()}
+
+                        // ListFooterComponent={() =>
+                        //     // <Text key={Math.random()}>Baksow</Text>
+                        //     <Divider color={'gray.800'} key={Math.random()} />
+
+                        // }
+                        // ListFooterComponentStyle={{
+                        //     // flexGrow: 1,
+                        //     width: '100%',
+                        //     bottom: 0,
+                        //     // paddingTop: 100,
+                        //     position: 'absolute'
+                        // }}
+                        />
+                    </View>
+
+                }
+                keyExtractor={item => Math.random().toString()} />
         </View>
     )
 }
