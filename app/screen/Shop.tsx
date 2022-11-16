@@ -9,6 +9,7 @@ const { height, width } = Dimensions.get("window");
 const ShopScreen = ({ navigation }: { navigation: any }) => {
   const isFocussed = useIsFocused();
   const [data, setData] = React.useState<any[]>([]);
+
   React.useEffect(() => {
     if (isFocussed) {
       fetch("https://imsea.herokuapp.com/api/1?q=dinosaur")
@@ -54,6 +55,7 @@ const ShopScreen = ({ navigation }: { navigation: any }) => {
       </Stack>
       <Flex flexWrap="wrap" direction="row" pt={2}>
         {[...Array(16).keys()].map((item) => (
+          // {data.map((item) => (
           <Image
             source={{
               uri: "https://wallpaperaccess.com/full/317501.jpg",

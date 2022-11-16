@@ -12,6 +12,8 @@ import ShopVideos from "../screen/ShopVideos";
 import { Icon } from "native-base";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import BookmarkScreen from "../screen/Bookmark";
+import { CommentScreen } from "../screen/Comment";
+import PlaneIcon from "../components/Icons/PlaneIcon";
 
 const AppNavigation = () => {
   return (
@@ -35,6 +37,13 @@ const AppNavigation = () => {
           }}
         />
         <Stack.Screen name="Bookmark" component={BookmarkScreen} />
+        <Stack.Screen
+          name="Comments"
+          component={CommentScreen}
+          options={{
+            headerRight: () => <PlaneIcon />,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
