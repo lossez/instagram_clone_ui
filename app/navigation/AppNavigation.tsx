@@ -14,11 +14,17 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import BookmarkScreen from "../screen/Bookmark";
 import { CommentScreen } from "../screen/Comment";
 import PlaneIcon from "../components/Icons/PlaneIcon";
+import Splash from "../screen/Splash";
 
 const AppNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="SplashScreen"
+          component={Splash}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen
           name="Navigation"
           component={TabNavigation}

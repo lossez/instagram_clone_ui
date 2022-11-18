@@ -27,6 +27,7 @@
     "expo-navigation-bar": "~1.1.1",
     "expo-splash-screen": "~0.14.1",
     "expo-status-bar": "~1.2.0",
+    "lottie-react-native": "5.0.1",
     "moment": "^2.29.4",
     "native-base": "3.4.0",
     "react": "17.0.1",
